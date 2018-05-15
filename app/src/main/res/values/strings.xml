@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="Email_Id">Email Id</string>
+    <string name="Password">Password</string>
+    <string name="SIGN_IN">SIGN IN</string>
+    <string name="REGISTER">REGISTER</string>
+    <string name="MOBILE">Mobile</string>
+</resources>
