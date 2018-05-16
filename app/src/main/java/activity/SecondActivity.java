@@ -15,10 +15,11 @@ import adapter.RecyclerViewAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import data.SampleDataProvider;
+import model.CardModel;
 
 public class SecondActivity extends AppCompatActivity {
-    List<SampleDataProvider> data = new ArrayList<>();
-//   @BindView(R.id.rec_view)
+    List<CardModel> data = new ArrayList<>();
+    @BindView(R.id.rec_view)
     RecyclerView recView;
 
     @Override

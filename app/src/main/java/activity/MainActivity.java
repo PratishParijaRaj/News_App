@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn:
-                Intent i = new Intent(MainActivity.this,SecondActivity.class);
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(i);
                 break;
             case R.id.btn2:

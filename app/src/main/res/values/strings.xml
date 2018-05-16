@@ -5,4 +5,10 @@
     <string name="SIGN_IN">SIGN IN</string>
     <string name="REGISTER">REGISTER</string>
     <string name="MOBILE">Mobile</string>
+    <string name="CAT">Sports</string>
+    <string name="TIME">19h ago</string>
+    <string name="HEADING">MS Dhoni, CSK players attend Suresh Raina’s daughter’s birthday</string>
+    <string name="LIKES">123</string>
+    <string name="COMMENTS">746</string>
+
 </resources>

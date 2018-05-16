@@ -13,11 +13,12 @@ import java.util.List;
 
 import activity.SecondActivity;
 import data.SampleDataProvider;
+import model.CardModel;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 private Context context;
 
-public RecyclerViewAdapter(SecondActivity dataActivity, List<SampleDataProvider> headers) {
+public RecyclerViewAdapter(SecondActivity dataActivity, List<CardModel> headers) {
         this.context=context;
         }
 
@@ -26,7 +27,7 @@ public RecyclerViewAdapter(SecondActivity dataActivity, List<SampleDataProvider>
 public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater layoutInflater= LayoutInflater.from(context);
-        view=layoutInflater.inflate(R.layout.activity_recycler_view,parent,false);
+        view=layoutInflater.inflate(R.layout.activity_card,parent,false);
         return new MyViewHolder(view);
         }
 
