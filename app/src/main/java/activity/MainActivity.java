@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     EditText userName;
     @BindView(R.id.passcode)
     EditText passcode;
-    @BindView(R.id.btn)
+    @BindView(R.id.btn_signin)
     Button btn;
-    @BindView(R.id.btn2)
+    @BindView(R.id.btn_register)
     Button btn2;
     @BindView(R.id.du)
     LinearLayout du;
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn, R.id.btn2})
+    @OnClick({R.id.btn_signin, R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn:
+            case R.id.btn_signin:
                 Intent i = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(i);
                 break;
-            case R.id.btn2:
+            case R.id.btn_register:
                 break;
         }
     }

@@ -4,25 +4,26 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CardModel implements Parcelable {
-    public int cardtype;
-    public String categories;
-    public Long timestamp;
-    public int imageUrl;
-    public String heading;
+    private int cardtype;
+    private String categories;
+    private Long timestamp;
+    private String imageUrl;
+    private String heading;
     private String description;
-    public int descImage;
-    public int likes;
-    public int comments;
-    public ArrayList<String> options;
-    public String url;
+    private String descImage;
+    private int likes;
+    private int comments;
+    private ArrayList<String> options;
+    private String url;
 
-    public CardModel(){}
-    public CardModel(int cardtype,String categories, Long timestamp, int imageUrl, String heading, int likes, int comments, ArrayList<String> options) {
+    public CardModel() {
+    }
+
+    public CardModel(int cardtype, String categories, Long timestamp, String imageUrl, String heading, int likes, int comments, ArrayList<String> options) {
         this.categories = categories;
-        this.cardtype=cardtype;
+        this.cardtype = cardtype;
         this.timestamp = timestamp;
         this.imageUrl = imageUrl;
         this.heading = heading;
@@ -30,9 +31,10 @@ public class CardModel implements Parcelable {
         this.comments = comments;
         this.options = options;
     }
-    public CardModel(int cardtype,String categories, Long timestamp, int imageUrl, String heading, String description, int descimage, int likes, int comments) {
+
+    public CardModel(int cardtype, String categories, Long timestamp, String imageUrl, String heading, String description, String descimage, int likes, int comments) {
         this.categories = categories;
-        this.cardtype=cardtype;
+        this.cardtype = cardtype;
         this.timestamp = timestamp;
         this.imageUrl = imageUrl;
         this.heading = heading;
@@ -43,15 +45,14 @@ public class CardModel implements Parcelable {
     }
 
 
-
-    public CardModel(int cardtype,String categories, Long timestamp, int imageUrl, String heading, String description,int likes, int comments, String url) {
+    public CardModel(int cardtype, String categories, Long timestamp, String imageUrl, String heading, String description, int likes, int comments, String url) {
         this.categories = categories;
         this.timestamp = timestamp;
-        this.cardtype=cardtype;
+        this.cardtype = cardtype;
         this.imageUrl = imageUrl;
         this.heading = heading;
         this.likes = likes;
-        this.description=description;
+        this.description = description;
         this.comments = comments;
         this.url = url;
     }
@@ -64,7 +65,7 @@ public class CardModel implements Parcelable {
         return timestamp;
     }
 
-    public int getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
@@ -76,7 +77,7 @@ public class CardModel implements Parcelable {
         return description;
     }
 
-    public int getDescimage() {
+    public String getDescimage() {
         return descImage;
     }
 
@@ -96,7 +97,7 @@ public class CardModel implements Parcelable {
         this.timestamp = timestamp;
     }
 
-    public void setImageUrl(int imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
@@ -108,7 +109,7 @@ public class CardModel implements Parcelable {
         this.description = description;
     }
 
-    public void setDescimage(int descimage) {
+    public void setDescimage(String descimage) {
         this.descImage = descimage;
     }
 
@@ -131,24 +132,24 @@ public class CardModel implements Parcelable {
         dest.writeInt(this.cardtype);
         dest.writeString(this.categories);
         dest.writeValue(this.timestamp);
-        dest.writeInt(this.imageUrl);
+        dest.writeString(this.imageUrl);
         dest.writeString(this.heading);
         dest.writeString(this.description);
-        dest.writeInt(this.descImage);
+        dest.writeString(this.descImage);
         dest.writeInt(this.likes);
         dest.writeInt(this.comments);
         dest.writeStringList(this.options);
         dest.writeString(this.url);
     }
 
-    protected CardModel(Parcel in) {
+    private CardModel(Parcel in) {
         this.cardtype = in.readInt();
         this.categories = in.readString();
         this.timestamp = (Long) in.readValue(Long.class.getClassLoader());
-        this.imageUrl = in.readInt();
+        this.imageUrl = in.readString();
         this.heading = in.readString();
         this.description = in.readString();
-        this.descImage = in.readInt();
+        this.descImage = in.readString();
         this.likes = in.readInt();
         this.comments = in.readInt();
         this.options = in.createStringArrayList();
