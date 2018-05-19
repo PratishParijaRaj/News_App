@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginStart="5dp"
+        android:weightSum="5"
+        android:layout_marginLeft="5dp">
 
         <TextView
             android:id="@+id/categories"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3.5"
+            android:maxLines="1"
             android:text="@string/CAT"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/timestamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:maxLines="1"
             android:text="@string/TIME"
-            android:textSize="20dp"
-            android:layout_marginLeft="190dp"
-            />
+            android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -35,17 +38,18 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/header_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@mipmap/ic_launcher_round" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:id="@+id/header_headings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="15dp"
             android:text="@string/HEADING"
-            android:textSize="18dp" />
+            android:textSize="18sp"
+            android:paddingLeft="15dp" />
     </LinearLayout>
 </LinearLayout>

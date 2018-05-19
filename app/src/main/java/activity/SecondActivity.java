@@ -17,6 +17,8 @@ import butterknife.ButterKnife;
 import data.SampleDataProvider;
 import model.CardModel;
 
+import static data.SampleDataProvider.getData;
+
 public class SecondActivity extends AppCompatActivity {
     List<CardModel> data = new ArrayList<>();
     @BindView(R.id.rec_view)
@@ -27,7 +29,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(SecondActivity.this, data);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this, getData());
         recView.setLayoutManager(new GridLayoutManager(this, 1));
         recView.setAdapter(recyclerViewAdapter);
     }

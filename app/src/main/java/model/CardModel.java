@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class CardModel implements Parcelable {
+
+
     private int cardtype;
     private String categories;
     private Long timestamp;
@@ -17,6 +19,7 @@ public class CardModel implements Parcelable {
     private int comments;
     private ArrayList<String> options;
     private String url;
+
 
     public CardModel() {
     }
@@ -119,6 +122,31 @@ public class CardModel implements Parcelable {
 
     public void setComments(int comments) {
         this.comments = comments;
+    }
+
+    public int getCardtype() {
+        return cardtype;
+    }
+
+    public void setCardtype(int cardtype) {
+        this.cardtype = cardtype;
+    }
+
+    public ArrayList<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<String> options) {
+        this.options = options;
+    }
+
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 
