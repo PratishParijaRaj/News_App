@@ -36,10 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private List<CardModel> cardModels;
     private Context context;
+    private String str;
 
     public RecyclerViewAdapter(Context contextList, List<CardModel> cardModels) {
         this.cardModels = cardModels;
-        this.context = context;
+        this.context = contextList;
     }
 
     @Override
@@ -136,7 +137,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     List<String> images = new ArrayList();
                     images = sourceContent.getImages();
                     Picasso.get().load(images.get(0)).into(viewHolder.preview);
-                    String str = sourceContent.getUrl();
+                    str = sourceContent.getUrl();
 
 
                 }
@@ -148,7 +149,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolder.preview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show();
+                    Uri uri = Uri.parse(str);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    context.startActivity(intent);
                 }
             });
         }
@@ -159,14 +162,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return cardModels.size();
     }
 
-    //    @OnClick(R.id.preview)
+//    @OnClick(R.id.preview)
 //    public void onViewClicked() {
 //        Toast.makeText(context, "hiiiiii", Toast.LENGTH_LONG).show();
 //        Uri uri = Uri.parse("https://android.jlelse.eu/room-store-your-data-c6d49b4d53a3");
 //        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 //        context.startActivity(intent);
 //    }
-
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -234,8 +236,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         CardView cardviewId3;
         @BindView(R.id.categories)
         TextView categories;
-        @BindView(R.id.preview)
-        ImageView preview;
         @BindView(R.id.timestamp)
         TextView timestamp;
         @BindView(R.id.header_img)
@@ -248,7 +248,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         Button btnLike;
         @BindView(R.id.btn_comment)
         Button btnComment;
-
+        @BindView(R.id.preview)
+        ImageView preview;
 
 
         public MyPreviewViewHolder(View itemView1) {
