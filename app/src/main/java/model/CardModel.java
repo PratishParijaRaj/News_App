@@ -1,13 +1,18 @@
 package model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+@Entity(tableName = "card_table")
 public class CardModel implements Parcelable {
 
 
+    @PrimaryKey(autoGenerate = true)
+    private int card_id;
     private int cardtype;
     private String categories;
     private Long timestamp;
@@ -63,88 +68,65 @@ public class CardModel implements Parcelable {
     public String getCategories() {
         return categories;
     }
-
+    public String getUrl() {
+        return url;
+    }
     public Long getTimestamp() {
         return timestamp;
     }
-
+    public ArrayList<String> getOptions() {
+        return options;
+    }
     public String getImageUrl() {
         return imageUrl;
     }
-
     public String getHeading() {
         return heading;
     }
-
+    public int getCardtype() {
+        return cardtype;
+    }
     public String getDescription() {
         return description;
     }
-
     public String getDescimage() {
         return descImage;
     }
-
     public int getLikes() {
         return likes;
     }
-
     public int getComments() {
         return comments;
     }
+    public int getCard_id() { return card_id; }
 
     public void setCategories(String categories) {
         this.categories = categories;
     }
-
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     public void setHeading(String heading) {
         this.heading = heading;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public void setDescimage(String descimage) {
-        this.descImage = descimage;
-    }
-
     public void setLikes(int likes) {
         this.likes = likes;
     }
-
     public void setComments(int comments) {
         this.comments = comments;
     }
-
-    public int getCardtype() {
-        return cardtype;
-    }
-
     public void setCardtype(int cardtype) {
         this.cardtype = cardtype;
     }
-
-    public ArrayList<String> getOptions() {
-        return options;
+    public void setDescimage(String descimage) {
+        this.descImage = descimage;
     }
-
-    public void setOptions(ArrayList<String> options) {
-        this.options = options;
-    }
-
-
-    public String getUrl() {
-        return url;
-    }
-
+    public void setOptions(ArrayList<String> options) { this.options = options; }
+    public void setCard_id(int card_id) { this.card_id = card_id; }
     public void setUrl(String url) {
         this.url = url;
     }

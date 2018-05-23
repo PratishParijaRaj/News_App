@@ -129,7 +129,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 public void onPre() {
                 }
-
                 @Override
 
                 public void onPos(final SourceContent sourceContent, boolean b) {
