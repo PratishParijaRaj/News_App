@@ -31,6 +31,11 @@ public class NewsRepo {
             }
         });
         thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void insertCardModel(final List<CardModel> cardModel) {

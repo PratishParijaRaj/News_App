@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         newsRepo = new NewsRepo(this);
-//        newsRepo.deleteCard();
+        newsRepo.deleteCard();
         newsRepo.insertCardModel(getData());
     }
 
