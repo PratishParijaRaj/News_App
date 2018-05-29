@@ -48,7 +48,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return cardModels.get(position).getCardtype();
     }
 
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -101,7 +100,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolder.btnLike.setText(s3);
             viewHolder.btnComment.setText(s4);
             Picasso.get().load(cardModels.get(position).getImageUrl()).resize(400, 400).centerCrop().into(viewHolder.headerImg);
-            ArrayList<String> opt = new ArrayList<>();
+            List<String> opt = new ArrayList<>();
             opt = cardModels.get(position).getOptions();
             viewHolder.radio1.setText(opt.get(0));
             viewHolder.radio2.setText(opt.get(1));
@@ -129,6 +128,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 public void onPre() {
                 }
+
                 @Override
 
                 public void onPos(final SourceContent sourceContent, boolean b) {
@@ -161,14 +161,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return cardModels.size();
     }
 
-//    @OnClick(R.id.preview)
-//    public void onViewClicked() {
-//        Toast.makeText(context, "hiiiiii", Toast.LENGTH_LONG).show();
-//        Uri uri = Uri.parse("https://android.jlelse.eu/room-store-your-data-c6d49b4d53a3");
-//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//        context.startActivity(intent);
-//    }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.categories)
@@ -194,7 +186,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
 
         }
     }

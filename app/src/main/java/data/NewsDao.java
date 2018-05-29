@@ -5,7 +5,6 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
-import android.provider.SyncStateContract;
 
 import java.util.List;
 
@@ -13,12 +12,14 @@ import model.CardModel;
 
 @Dao
 public interface NewsDao {
-    @Query("SELECT * FROM card_table ")
+    @Query("SELECT * FROM card_table")
     List<CardModel> getAll();
 
+    @Query("DELETE FROM card_table")
+    void deleteAll();
 
     @Insert
-    void insert(CardModel news);
+    void insert(List<CardModel> news);
 
 
     @Update

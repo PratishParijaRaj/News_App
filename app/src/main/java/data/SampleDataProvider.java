@@ -1,18 +1,8 @@
 package data;
 
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import com.example.pratishparija.news.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.RecyclerViewAdapter;
 import model.CardModel;
 
 public class SampleDataProvider {
@@ -35,6 +25,8 @@ public class SampleDataProvider {
         data.add(new CardModel(3, "Politics", (long) 17, "https://firebasestorage.googleapis.com/v0/b/news-e5e04.appspot.com/o/a.png?alt=media&token=9cb72430-d90a-48e5-8f7a-e825efdcca46", "IPL 2018 Week Highlights", "Description", 103, 121, "https://www.nytimes.com/2018/05/19/technology/facebook-deletion-center-germany.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=rank&module=package&version=highlights&contentPlacement=1&pgtype=sectionfront"));
         return data;
     }
+
+
 }
 
 

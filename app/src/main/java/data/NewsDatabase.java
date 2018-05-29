@@ -3,12 +3,13 @@ package data;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
-import android.provider.SyncStateContract;
 
 import model.CardModel;
 
 @Database(entities = {CardModel.class}, version = 1)
+@TypeConverters({ConverterCard.class})
 public abstract class NewsDatabase extends RoomDatabase {
     public abstract NewsDao getNewsDao();
 

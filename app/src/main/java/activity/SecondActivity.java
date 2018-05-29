@@ -1,6 +1,5 @@
 package activity;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,34 +16,41 @@ import adapter.RecyclerViewAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import data.NewsRepo;
-import data.SampleDataProvider;
 import model.CardModel;
 
 import static data.SampleDataProvider.getData;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements NewsRepo.CallbackInterface {
     List<CardModel> data = new ArrayList<>();
     @BindView(R.id.rec_view)
     RecyclerView recView;
     NewsRepo newsRepo;
+    RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
-        newsRepo = new NewsRepo(this);
-        List<CardModel> cardModelList = new ArrayList<>();
-        cardModelList = getData();
-        for (int pos = 0; pos < cardModelList.size(); pos++) {
-            newsRepo.insertCardModel(cardModelList.get(pos));
+        newsRepo = new NewsRepo(SecondActivity.this);
+        newsRepo.getAllCards();
+        bindData(data);
 
-        }
+    }
 
-        Log.d("q",""+newsRepo.getAllCards().size());
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this, getData());
+    private void bindData(List<CardModel> data) {
+        recyclerViewAdapter = new RecyclerViewAdapter(this, data);
         recView.setLayoutManager(new GridLayoutManager(this, 1));
         recView.setAdapter(recyclerViewAdapter);
     }
 
+
+    @Override
+    public void onDataRetrieved(List<CardModel> dataList) {
+        data.clear();
+        data = (ArrayList) dataList;
+        bindData(data);
+//        Log.d("q", "" + dataList);
+
+    }
 }

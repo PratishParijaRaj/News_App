@@ -14,6 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import data.NewsDatabase;
+import data.NewsRepo;
+
+import static data.SampleDataProvider.getData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +30,16 @@ public class MainActivity extends AppCompatActivity {
     Button btn2;
     @BindView(R.id.du)
     LinearLayout du;
+    NewsRepo newsRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        newsRepo = new NewsRepo(this);
+//        newsRepo.deleteCard();
+        newsRepo.insertCardModel(getData());
     }
 
     @OnClick({R.id.btn_signin, R.id.btn_register})
