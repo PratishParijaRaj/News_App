@@ -1,114 +1,210 @@
 package WebServices;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Model {
-    private int card_id;
-    private int cardtype;
-    private Long timestamp;
-    private int likes;
-    private int comments;
-    private String url;
-    private String categories;
-    private String imageUrl;
-    private String heading;
-    private String description;
-    public String descImage;
-    private List<String> options;
+    @SerializedName("coord")
+    private Coord coord;
+    @SerializedName("weather")
+    private ArrayList<Weather> weather;
+    @SerializedName("base")
+    private String base;
+    @SerializedName("main")
+    private Main main;
+    @SerializedName("visibility")
+    private int visibility;
+    @SerializedName("wind")
+    private Wind wind;
+    @SerializedName("clouds")
+    private Clouds clouds;
+    @SerializedName("dt")
+    private long unixTimestamp;
+    @SerializedName("sys")
+    private Sys sys;
+    @SerializedName("id")
+    private long city_id;
+    @SerializedName("name")
+    private String city_name;
+    @SerializedName("cod")
+    private int response_code;
 
-    public void setCard_id(int card_id) {
-        this.card_id = card_id;
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 
-    public void setCardtype(int cardtype) {
-        this.cardtype = cardtype;
+
+    public static WeatherResponse fromJson(String json) {
+        return new Gson().fromJson(json, WeatherResponse.class);
     }
 
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
+
+    public class Clouds {
+        @SerializedName("all")
+        private int cloudiness;
     }
 
-    public void setLikes(int likes) {
-        this.likes = likes;
+
+    public class Coord {
+        @SerializedName("lon")
+        private double lon;
+        @SerializedName("lat")
+        private double lat;
     }
 
-    public void setComments(int comments) {
-        this.comments = comments;
+
+    public class Main {
+        @SerializedName("temp")
+        private double temp;
+        @SerializedName("pressure")
+        private int pressure;
+        @SerializedName("humidity")
+        private int humidity;
+        @SerializedName("temp_min")
+        private double temp_min;
+        @SerializedName("temp_max")
+        private double temp_max;
+//        @SerializedName("sea_level")
+//        private int sea_level;
+//        @SerializedName("grnd_level")
+//        private int ground_level;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+
+    public class Sys {
+        @SerializedName("type")
+        private int type;
+        @SerializedName("id")
+        private int id;
+        @SerializedName("message")
+        private double message;
+        @SerializedName("country")
+        private String country;
+        @SerializedName("sunrise")
+        private long sunrise;
+        @SerializedName("sunset")
+        private long sunset;
     }
 
-    public void setCategories(String categories) {
-        this.categories = categories;
+
+    public class Weather {
+        @SerializedName("id")
+        private int id;
+        @SerializedName("main")
+        private String main;
+        @SerializedName("description")
+        private String description;
+        @SerializedName("icon")
+        private String icon;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+
+    public class Wind {
+        @SerializedName("speed")
+        private double speed;
+        @SerializedName("deg")
+        private int direction;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public Coord getCoord() {
+        return coord;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public ArrayList<Weather> getWeather() {
+        return weather;
     }
 
-    public void setDescImage(String descImage) {
-        this.descImage = descImage;
+    public String getBase() {
+        return base;
     }
 
-    public void setOptions(List<String> options) {
-        this.options = options;
+    public Main getMain() {
+        return main;
     }
 
-    public int getCard_id() {
-        return card_id;
+    public int getVisibility() {
+        return visibility;
     }
 
-    public int getCardtype() {
-        return cardtype;
+    public Wind getWind() {
+        return wind;
     }
 
-    public Long getTimestamp() {
-        return timestamp;
+    public Clouds getClouds() {
+        return clouds;
     }
 
-    public int getLikes() {
-        return likes;
+    public Date getUnixTimestamp() {
+        return new Date((long)(unixTimestamp * 1000));
     }
 
-    public int getComments() {
-        return comments;
+    public Sys getSys() {
+        return sys;
     }
 
-    public String getUrl() {
-        return url;
+    public long getCity_id() {
+        return city_id;
     }
 
-    public String getCategories() {
-        return categories;
+    public String getCity_name() {
+        return city_name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getResponse_code() {
+        return response_code;
     }
 
-    public String getHeading() {
-        return heading;
+    public void setCoord(Coord coord) {
+        this.coord = coord;
     }
 
-    public String getDescription() {
-        return description;
+    public void setWeather(ArrayList<Weather> weather) {
+        this.weather = weather;
     }
 
-    public String getDescImage() {
-        return descImage;
+    public void setBase(String base) {
+        this.base = base;
     }
 
-    public List<String> getOptions() {
-        return options;
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void setVisibility(int visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+
+    public void setClouds(Clouds clouds) {
+        this.clouds = clouds;
+    }
+
+    public void setUnixTimestamp(long unixTimestamp) {
+        this.unixTimestamp = unixTimestamp;
+    }
+
+    public void setSys(Sys sys) {
+        this.sys = sys;
+    }
+
+    public void setCity_id(long city_id) {
+        this.city_id = city_id;
+    }
+
+    public void setCity_name(String city_name) {
+        this.city_name = city_name;
+    }
+
+    public void setResponse_code(int response_code) {
+        this.response_code = response_code;
     }
 }
+
