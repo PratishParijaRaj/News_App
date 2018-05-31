@@ -33,16 +33,8 @@ public class Model {
     @SerializedName("cod")
     private int response_code;
 
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
+    public Model() {
     }
-
-
-    public static WeatherResponse fromJson(String json) {
-        return new Gson().fromJson(json, WeatherResponse.class);
-    }
-
 
     public class Clouds {
         @SerializedName("all")
@@ -69,10 +61,6 @@ public class Model {
         private double temp_min;
         @SerializedName("temp_max")
         private double temp_max;
-//        @SerializedName("sea_level")
-//        private int sea_level;
-//        @SerializedName("grnd_level")
-//        private int ground_level;
     }
 
 
@@ -140,7 +128,7 @@ public class Model {
     }
 
     public Date getUnixTimestamp() {
-        return new Date((long)(unixTimestamp * 1000));
+        return new Date((long) (unixTimestamp * 1000));
     }
 
     public Sys getSys() {
@@ -204,6 +192,21 @@ public class Model {
     }
 
     public void setResponse_code(int response_code) {
+        this.response_code = response_code;
+    }
+
+    public Model(Coord coord, ArrayList<Weather> weather, String base, Main main, int visibility, Wind wind, Clouds clouds, long unixTimestamp, Sys sys, long city_id, String city_name, int response_code) {
+        this.coord = coord;
+        this.weather = weather;
+        this.base = base;
+        this.main = main;
+        this.visibility = visibility;
+        this.wind = wind;
+        this.clouds = clouds;
+        this.unixTimestamp = unixTimestamp;
+        this.sys = sys;
+        this.city_id = city_id;
+        this.city_name = city_name;
         this.response_code = response_code;
     }
 }

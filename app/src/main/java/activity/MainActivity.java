@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.btn_register:
+                Intent j = new Intent(MainActivity.this, WeatherDetailsActivity.class);
+                startActivity(j);
                 break;
         }
     }

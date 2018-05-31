@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name="activity.SecondActivity"></activity>
+        <activity android:name="activity.WeatherDetailsActivity"></activity>
 
     </application>
 

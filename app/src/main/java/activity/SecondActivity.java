@@ -50,7 +50,6 @@ public class SecondActivity extends AppCompatActivity implements NewsRepo.Callba
     public void onDataRetrieved(List<CardModel> dataList) {
         data = dataList;
         bindData(data);
-//        Log.d("q", "" + dataList);
 
     }
 }
