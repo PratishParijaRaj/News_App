@@ -56,7 +56,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
 
         ApiInterface apiInterface = ApiServices.getClient(GLobalData.Weather).create(ApiInterface.class);
 
-        Call<Model> call = apiInterface.checkWeather("banglore,in", "b6907d289e10d714a6e88b30761fae22");
+        Call<Model> call = apiInterface.checkWeather("bangalore,in", "b6907d289e10d714a6e88b30761fae22");
 
         call.enqueue(new Callback<Model>() {
             @Override
@@ -64,6 +64,8 @@ public class WeatherDetailsActivity extends AppCompatActivity {
                 Log.e("R", new Gson().toJson(response));
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
+                    WeatherDetailsActivity.this.model = response.body();
+                    //TODO: adapter.notifyDataSetChanged();
                     Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
                 } else {

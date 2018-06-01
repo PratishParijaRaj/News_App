@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/CHECK_WEATHER" />
-    <ListView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_view">
+        android:id="@+id/recycler_view">
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -9,9 +9,10 @@ public class ApiServices {
 
 
     private static Retrofit retrofit = null;
+
     public static Retrofit getClient(String BaseUrls) {
-        Retrofit retrofit=null;
-        if (retrofit==null) {
+        Retrofit retrofit = null;
+        if (retrofit == null) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
@@ -20,8 +21,6 @@ public class ApiServices {
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
-
-
         }
         return retrofit;
     }
