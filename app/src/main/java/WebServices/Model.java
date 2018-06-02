@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Model {
+
     @SerializedName("coord")
     private Coord coord;
     @SerializedName("weather")

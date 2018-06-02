@@ -3,22 +3,22 @@ package activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.pratishparija.news.R;
 import com.google.gson.Gson;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
+import WebServices.ApiClient;
 import WebServices.ApiInterface;
-import WebServices.ApiServices;
-import WebServices.GLobalData;
 import WebServices.Model;
+import adapter.WeatherAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,12 +27,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WeatherDetailsActivity extends AppCompatActivity {
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
     @BindView(R.id.bt_check_weather)
     Button btCheckWeather;
-    List<String> data;
-    @BindView(R.id.list_view)
-    ListView listView;
+    List<Model> data = new ArrayList<>();
     Model model;
+    WeatherAdapter weatherAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     @OnClick(R.id.bt_check_weather)
     public void onViewClicked() {
         getWeatherValue();
+        weatherAdapter = new WeatherAdapter(this, data);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(weatherAdapter);
 
     }
 
@@ -53,19 +58,17 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("getting weather");
         progressDialog.show();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        ApiInterface apiInterface = ApiServices.getClient(GLobalData.Weather).create(ApiInterface.class);
-
-        Call<Model> call = apiInterface.checkWeather("bangalore,in", "b6907d289e10d714a6e88b30761fae22");
-
+        Call<Model> call = apiInterface.checkWeather("Bangalore,in", "b6907d289e10d714a6e88b30761fae22");
         call.enqueue(new Callback<Model>() {
             @Override
             public void onResponse(Call<Model> call, Response<Model> response) {
-                Log.e("R", new Gson().toJson(response));
                 progressDialog.dismiss();
-                if (response.isSuccessful()) {
-                    WeatherDetailsActivity.this.model = response.body();
-                    //TODO: adapter.notifyDataSetChanged();
+                Log.e("R", new Gson().toJson(response));
+                if (response.isSuccessful() && response.body() != null) {
+//                    data.addAll(response.body());
+//                    weatherAdapter.notifyDataSetChanged();
                     Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
                 } else {
