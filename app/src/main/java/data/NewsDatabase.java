@@ -6,10 +6,11 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
+import TestedModel.WeatherModel;
 import model.CardModel;
 
-@Database(entities = {CardModel.class}, version = 1)
-@TypeConverters({ConverterCard.class})
+@Database(entities = {CardModel.class, WeatherModel.class}, version = 1)
+@TypeConverters({ConverterCard.class,ConverterWeather.class})
 public abstract class NewsDatabase extends RoomDatabase {
     public abstract NewsDao getNewsDao();
 

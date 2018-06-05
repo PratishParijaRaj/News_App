@@ -112,7 +112,9 @@ public class CardModel implements Parcelable {
         return comments;
     }
 
-    public int getCard_id() { return card_id; }
+    public int getCard_id() {
+        return card_id;
+    }
 
     public void setCategories(String categories) {
         this.categories = categories;

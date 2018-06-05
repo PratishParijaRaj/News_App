@@ -137,8 +137,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     images = sourceContent.getImages();
                     Picasso.get().load(images.get(0)).into(viewHolder.preview);
                     str = sourceContent.getUrl();
-
-
                 }
 
             };

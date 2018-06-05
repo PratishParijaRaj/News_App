@@ -7,20 +7,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-
 import com.example.pratishparija.news.R;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import adapter.RecyclerViewAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import data.NewsRepo;
 import model.CardModel;
-
 import static data.SampleDataProvider.getData;
-
 public class SecondActivity extends AppCompatActivity implements NewsRepo.CallbackInterface {
     List<CardModel> data = new ArrayList<>();
     @BindView(R.id.rec_view)

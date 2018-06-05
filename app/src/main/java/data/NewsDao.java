@@ -8,6 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import TestedModel.WeatherModel;
 import model.CardModel;
 
 @Dao
@@ -20,6 +21,9 @@ public interface NewsDao {
 
     @Insert
     void insert(List<CardModel> news);
+
+    @Insert
+    void insertWeather(WeatherModel weatherModel);
 
 
     @Update

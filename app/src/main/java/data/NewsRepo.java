@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import TestedModel.WeatherModel;
 import activity.SecondActivity;
 import model.CardModel;
 
@@ -43,6 +44,17 @@ public class NewsRepo {
             @Override
             public void run() {
                 newsDatabase.getNewsDao().insert(cardModel);
+
+            }
+        });
+        thread.start();
+    }
+
+    public void insertWeatherModel(final WeatherModel weatherModel) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                newsDatabase.getNewsDao().insertWeather(weatherModel);
 
             }
         });
