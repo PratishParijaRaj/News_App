@@ -20,6 +20,8 @@ import TestedModel.WeatherModel;
 import TestedModel.weather;
 import WebServices.ApiClient;
 import WebServices.ApiInterface;
+import WebServices.ApiClient;
+import WebServices.ApiInterface;
 import adapter.WeatherAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,9 +48,10 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     TextView text8;
     private List<WeatherModel> data = new ArrayList<>();
     private List<weather> list = new ArrayList<>();
-    WeatherModel weatherModel=new WeatherModel();
+    WeatherModel weatherModel = new WeatherModel();
     WeatherAdapter weatherAdapter;
     NewsRepo newsRepo;
+    Button btCheckWeather;
 
 
     @Override
@@ -69,13 +72,6 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("getting weather");
         progressDialog.show();
-
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-        httpClient.addInterceptor(loggingInterceptor);
-
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         Call<WeatherModel> call = apiInterface.getcheckWeatherList("London,uk", "b6907d289e10d714a6e88b30761fae22");
@@ -92,8 +88,6 @@ public class WeatherDetailsActivity extends AppCompatActivity {
                     text8.setText(Integer.toString(response.body().getVisibility()));
                     text6.setText(Double.toString(response.body().getCoord().getLat()));
                     text7.setText(Double.toString(response.body().getCoord().getLon()));
-
-
                     Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
                 } else {

@@ -13,7 +13,7 @@ public class ApiClient {
 
     public static Retrofit getClient() {
         Gson gson = new GsonBuilder().setLenient().create();
-        if (retrofit == null) {
+        if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(GLobalData.Weather)
                     .addConverterFactory(GsonConverterFactory.create(gson))

@@ -9,29 +9,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/MOBILE"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/MOBILE"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/MOBILE"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/text3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/MOBILE"
         android:src="@mipmap/coniglio_rabbit_small"
-        android:textSize="20sp"/>
-
+        android:text="@string/MOBILE"
+        android:contentDescription="@string/SIGN_IN"
+        android:textSize="20sp" />
 
 </LinearLayout>
