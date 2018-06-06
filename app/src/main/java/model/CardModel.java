@@ -25,7 +25,6 @@ public class CardModel implements Parcelable {
     public String descImage;
     private int likes;
     private int comments;
-
     private String url;
 
 

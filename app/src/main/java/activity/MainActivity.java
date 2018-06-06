@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     EditText passcode;
     @BindView(R.id.btn_signin)
     Button btn;
+    @BindView(R.id.btn_async)
+    Button btnasync;
     @BindView(R.id.btn_register)
     Button btn2;
     @BindView(R.id.du)
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         newsRepo.insertCardModel(getData());
     }
 
-    @OnClick({R.id.btn_signin, R.id.btn_register})
+    @OnClick({R.id.btn_signin, R.id.btn_register,R.id.btn_async})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_signin:
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_register:
                 Intent j = new Intent(MainActivity.this, WeatherDetailsActivity.class);
                 startActivity(j);
+                break;
+            case R.id.btn_async:
+                Intent k = new Intent(MainActivity.this, AsyncTaskActivity.class);
+                startActivity(k);
                 break;
         }
     }

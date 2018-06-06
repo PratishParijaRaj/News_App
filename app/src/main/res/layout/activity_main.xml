@@ -63,6 +63,15 @@
         android:layout_marginTop="10dp"
         android:text="@string/REGISTER"
         android:background="@color/colorSecondaryGradient"/>
+    <Button
+        android:id="@+id/btn_async"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Async"
+        android:background="@color/colorSecondaryGradient"/>
 
 
 </LinearLayout>
