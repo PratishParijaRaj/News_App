@@ -1,6 +1,6 @@
 package TestedModel;
 
-public class main {
+public class Main {
     private double temp;
     private double pressure;
     private double humidity;

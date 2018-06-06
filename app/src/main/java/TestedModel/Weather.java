@@ -1,7 +1,7 @@
 package TestedModel;
 
 
-public class weather {
+public class Weather {
     private String main;
     private String description;
     private String icon;

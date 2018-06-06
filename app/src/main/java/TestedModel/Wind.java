@@ -1,6 +1,6 @@
 package TestedModel;
 
-public class wind {
+public class Wind {
     private double speed;
     private double deg;
 

@@ -1,6 +1,6 @@
 package TestedModel;
 
-public class sys {
+public class Sys {
     private double type;
     private double id;
     private double message;

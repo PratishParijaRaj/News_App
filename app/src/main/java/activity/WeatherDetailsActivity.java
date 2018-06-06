@@ -16,8 +16,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import TestedModel.Weather;
 import TestedModel.WeatherModel;
-import TestedModel.weather;
 import WebServices.ApiClient;
 import WebServices.ApiInterface;
 import WebServices.ApiClient;
@@ -47,7 +47,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     @BindView(R.id.text8)
     TextView text8;
     private List<WeatherModel> data = new ArrayList<>();
-    private List<weather> list = new ArrayList<>();
+    private List<Weather> list = new ArrayList<>();
     WeatherModel weatherModel = new WeatherModel();
     WeatherAdapter weatherAdapter;
     NewsRepo newsRepo;
@@ -86,7 +86,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
 //                    text6.setText(Integer.toString(response.body().getCod()));
 //                    text7.setText(Integer.toString(response.body().getDt()));
                     text8.setText(Integer.toString(response.body().getVisibility()));
-                    text6.setText(Double.toString(response.body().getCoord().getLat()));
+                    text6.setText(Double.toString(response.body().getSys().getMessage()));
                     text7.setText(Double.toString(response.body().getCoord().getLon()));
                     Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
 

@@ -1,6 +1,6 @@
 package TestedModel;
 
-public class clouds {
+public class Clouds {
     private int all;
 
     public int getAll() {

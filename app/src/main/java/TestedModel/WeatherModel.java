@@ -6,6 +6,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverter;
 import android.arch.persistence.room.TypeConverters;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import data.ConverterCard;
@@ -13,25 +15,49 @@ import data.ConverterWeather;
 
 @Entity(tableName = "weather_table")
 public class WeatherModel {
-    private String base;
     @PrimaryKey(autoGenerate = true)
     private int d_id;
+    @SerializedName("base")
+    private String base;
+    @SerializedName("visibility")
     private int visibility;
+    @SerializedName("dt")
     private int dt;
-    private int id;
+    @SerializedName("id")
+    private int s_id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("cod")
     private int cod;
     @Embedded
-    private coord coord;
+    @SerializedName("coord")
+    private Coord coord;
     @Embedded
-    private main main;
-    @Embedded
-    private wind wind;
-    @Embedded
-    private clouds clouds;
+    @SerializedName("sys")
+    private Sys sys;
 
+    public Sys getSys() {
+        return sys;
+    }
+
+    public void setSys(Sys sys) {
+        this.sys = sys;
+    }
+
+    @Embedded
+    @SerializedName("main")
+    private Main main;
+    @Embedded
+    @SerializedName("wind")
+    private Wind wind;
+
+
+    @Embedded
+    @SerializedName("clouds")
+    private Clouds clouds;
     @TypeConverters(ConverterWeather.class)
-    private List<weather> weather;
+    @SerializedName("weather")
+    private List<Weather> weather;
 
     public String getBase() {
         return base;
@@ -57,14 +83,6 @@ public class WeatherModel {
         this.dt = dt;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -77,47 +95,55 @@ public class WeatherModel {
         return cod;
     }
 
+    public int getS_id() {
+        return s_id;
+    }
+
+    public void setS_id(int s_id) {
+        this.s_id = s_id;
+    }
+
     public void setCod(int cod) {
         this.cod = cod;
     }
 
-    public TestedModel.coord getCoord() {
+    public TestedModel.Coord getCoord() {
         return coord;
     }
 
-    public void setCoord(TestedModel.coord coord) {
+    public void setCoord(TestedModel.Coord coord) {
         this.coord = coord;
     }
 
-    public TestedModel.main getMain() {
+    public TestedModel.Main getMain() {
         return main;
     }
 
-    public void setMain(TestedModel.main main) {
+    public void setMain(TestedModel.Main main) {
         this.main = main;
     }
 
-    public TestedModel.wind getWind() {
+    public TestedModel.Wind getWind() {
         return wind;
     }
 
-    public void setWind(TestedModel.wind wind) {
+    public void setWind(TestedModel.Wind wind) {
         this.wind = wind;
     }
 
-    public TestedModel.clouds getClouds() {
+    public TestedModel.Clouds getClouds() {
         return clouds;
     }
 
-    public void setClouds(TestedModel.clouds clouds) {
+    public void setClouds(TestedModel.Clouds clouds) {
         this.clouds = clouds;
     }
 
-    public List<TestedModel.weather> getWeather() {
+    public List<TestedModel.Weather> getWeather() {
         return weather;
     }
 
-    public void setWeather(List<TestedModel.weather> weather) {
+    public void setWeather(List<TestedModel.Weather> weather) {
         this.weather = weather;
     }
 

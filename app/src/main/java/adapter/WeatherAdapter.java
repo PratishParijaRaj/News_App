@@ -15,17 +15,17 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 
-import TestedModel.weather;
+import TestedModel.Weather;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHolder> {
 
-    private List<weather> models;
+    private List<Weather> models;
     private Context context;
     private String str;
 
-    public WeatherAdapter(Context context, List<weather> models) {
+    public WeatherAdapter(Context context, List<Weather> models) {
         this.models = models;
         this.context = context;
     }

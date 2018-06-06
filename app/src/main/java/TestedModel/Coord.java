@@ -1,6 +1,6 @@
 package TestedModel;
 
-public class coord {
+public class Coord {
     private double lon;
     private double lat;
 
