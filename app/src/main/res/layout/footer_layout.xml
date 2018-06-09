@@ -10,7 +10,6 @@
         android:text="@string/LIKES"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/ic_thumb_up_black_24dp"
         android:id="@+id/btn_like"
         android:paddingLeft="10dp"

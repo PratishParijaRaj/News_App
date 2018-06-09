@@ -65,7 +65,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_details);
         ButterKnife.bind(this);
-//        getWeatherValue();
+        getWeatherValue();
         newsRepo = new NewsRepo(this);
         weatherAdapter = new WeatherAdapter(getApplicationContext(), list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -73,41 +73,41 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         newsRepo.insertWeatherModel(weatherModel);
     }
 
-//    private void getWeatherValue() {
-//        final ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("getting weather");
-//        progressDialog.show();
-//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-//
-//        Call<WeatherModel> call = apiInterface.getcheckWeatherList("London,uk", "b6907d289e10d714a6e88b30761fae22");
-//        call.enqueue(new Callback<WeatherModel>() {
-//            @Override
-//            public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
-//                progressDialog.dismiss();
-//                Log.e("R", new Gson().toJson(response));
-//                if (response.isSuccessful() && response.body() != null) {
-//                    list.addAll(response.body().getWeather());
-//                    text5.setText(response.body().getName());
-////                    text6.setText(Integer.toString(response.body().getCod()));
-////                    text7.setText(Integer.toString(response.body().getDt()));
-//                    text8.setText(Integer.toString(response.body().getVisibility()));
-//                    text6.setText(Double.toString(response.body().getSys().getMessage()));
-//                    text7.setText(Double.toString(response.body().getCoord().getLon()));
-//                    Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//
-//                } else {
-//                    Toast.makeText(WeatherDetailsActivity.this, "Failure", Toast.LENGTH_SHORT).show();
-//                }
-//                weatherAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<WeatherModel> call, Throwable t) {
-//                progressDialog.dismiss();
-//                Log.e("TAG", t.getMessage());
-//            }
-//        });
-//    }
+    private void getWeatherValue() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("getting weather");
+        progressDialog.show();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<WeatherModel> call = apiInterface.getcheckWeatherList("London,uk", "b6907d289e10d714a6e88b30761fae22");
+        call.enqueue(new Callback<WeatherModel>() {
+            @Override
+            public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
+                progressDialog.dismiss();
+                Log.e("R", new Gson().toJson(response));
+                if (response.isSuccessful() && response.body() != null) {
+                    list.addAll(response.body().getWeather());
+                    text5.setText(response.body().getName());
+//                    text6.setText(Integer.toString(response.body().getCod()));
+//                    text7.setText(Integer.toString(response.body().getDt()));
+                    text8.setText(Integer.toString(response.body().getVisibility()));
+                    text6.setText(Double.toString(response.body().getSys().getMessage()));
+                    text7.setText(Double.toString(response.body().getCoord().getLon()));
+                    Toast.makeText(WeatherDetailsActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(WeatherDetailsActivity.this, "Failure", Toast.LENGTH_SHORT).show();
+                }
+                weatherAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<WeatherModel> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.e("TAG", t.getMessage());
+            }
+        });
+    }
 
 }
 

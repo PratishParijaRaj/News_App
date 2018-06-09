@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pratishparija.news.R;
 import com.leocardz.link.preview.library.LinkPreviewCallback;
@@ -25,7 +23,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import activity.MainActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,6 +31,8 @@ import model.CardModel;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    @BindView(R.id.btn_like)
+    Button btnLike;
     private List<CardModel> cardModels;
     private Context context;
     private String str;
@@ -63,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else return null;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -72,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             long i1 = cardModels.get(position).getTimestamp();
             int i2 = cardModels.get(position).getLikes();
+
             int i3 = cardModels.get(position).getComments();
             String s1 = Long.toString(i1) + "h ago";
             String s3 = Integer.toString(i2);
@@ -84,6 +85,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolder.btnComment.setText(s4);
             Picasso.get().load(cardModels.get(position).getDescimage()).resize(400, 400).into(viewHolder.bodyImageView);
             Picasso.get().load(cardModels.get(position).getImageUrl()).into(viewHolder.headerImg);
+
+
         }
         if (holder instanceof MyNewViewHolder) {
 
@@ -157,6 +160,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemCount() {
         return cardModels.size();
+    }
+
+    @OnClick(R.id.btn_like)
+    public void onViewClicked() {
+
     }
 
 
