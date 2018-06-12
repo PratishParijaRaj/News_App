@@ -13,7 +13,8 @@ import model.CardModel;
 public class ConverterCard {
     @TypeConverter
     public static List<String> fromString(String value) {
-        Type listType = new TypeToken<List<String>>() {}.getType();
+        Type listType = new TypeToken<List<String>>() {
+        }.getType();
         return new Gson().fromJson(value, listType);
     }
 

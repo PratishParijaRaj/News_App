@@ -10,7 +10,7 @@ import TestedModel.WeatherModel;
 import model.CardModel;
 
 @Database(entities = {CardModel.class, WeatherModel.class}, version = 1)
-@TypeConverters({ConverterCard.class,ConverterWeather.class})
+@TypeConverters({ConverterCard.class, ConverterWeather.class})
 public abstract class NewsDatabase extends RoomDatabase {
     public abstract NewsDao getNewsDao();
 

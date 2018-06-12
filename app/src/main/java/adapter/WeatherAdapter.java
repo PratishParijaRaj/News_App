@@ -48,9 +48,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
     }
 
     @Override
-    public int getItemCount() {
-        return models.size();
-    }
+    public int getItemCount() { return models.size(); }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.text1)

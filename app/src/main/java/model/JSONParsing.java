@@ -45,7 +45,6 @@ public class JSONParsing {
             model.getWind().setDirection(wind.optInt("deg"));
             JSONObject clouds = object.optJSONObject("clouds");
             model.getClouds().setCloudiness(clouds.optInt("all"));
-
             JSONArray array = object.optJSONArray("weather");
             ArrayList<Model.Weather> weatherList = new ArrayList<>();
             for (int i = 0; i < array.length(); i++) {

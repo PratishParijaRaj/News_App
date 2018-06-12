@@ -13,7 +13,8 @@ import TestedModel.Weather;
 public class ConverterWeather {
     @TypeConverter
     public static List<Weather> fromString(String value) {
-        Type listType = new TypeToken<List<String>>() {}.getType();
+        Type listType = new TypeToken<List<String>>() {
+        }.getType();
         return new Gson().fromJson(value, listType);
     }
 

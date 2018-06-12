@@ -14,12 +14,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import TestedModel.WeatherModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import data.NewsRepo;
 import model.JSONParsing;
 import model.Model;
 
-public class AsyncTaskActivity extends AppCompatActivity {
+public class AsyncTaskActivity extends AppCompatActivity implements NewsRepo.Call{
 
     static String string = "http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22";
     MyAsyncTask myAsyncTask = new MyAsyncTask();
@@ -37,6 +39,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
     TextView txt6;
 
     String value;
+    List<WeatherModel> base;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,11 @@ public class AsyncTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_async);
         ButterKnife.bind(this);
         myAsyncTask.execute(string);
+    }
 
+    @Override
+    public void onWeatherRecived(List<WeatherModel> data) {
+        base=data;
 
     }
 
@@ -61,13 +68,14 @@ public class AsyncTaskActivity extends AppCompatActivity {
             super.onPostExecute(m);
             JSONParsing jsonParsing = new JSONParsing();
             Model model = jsonParsing.parseJSON(value);
-            Model.Coord cod = model.new Coord();
+//            Model.Coord cod = model.new Coord();
             txt1.setText(model.getCity_name());
-            txt2.setText(""+model.getSys().getMessage());
-            txt3.setText(""+model.getClouds().getCloudiness());
-            txt4.setText(""+model.getCoord().getLat());
-            txt5.setText(""+model.getMain().getTemp_min());
-            txt6.setText(""+model.getWeather().get(0).getDescription());
+            txt2.setText("" + model.getSys().getMessage());
+            txt3.setText("" + model.getClouds().getCloudiness());
+            txt4.setText("" + model.getCoord().getLat());
+            txt5.setText("" + model.getMain().getTemp_min());
+            txt6.setText("" + model.getWeather().get(0).getDescription());
+//            txt6.setText(base.get(0).toString());
         }
 
         @Override

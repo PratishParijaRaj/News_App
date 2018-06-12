@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         newsRepo.insertCardModel(getData());
     }
 
-    @OnClick({R.id.btn_signin, R.id.btn_register,R.id.btn_async})
+    @OnClick({R.id.btn_signin, R.id.btn_register, R.id.btn_async})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_signin:

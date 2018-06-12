@@ -16,6 +16,9 @@ public interface NewsDao {
     @Query("SELECT * FROM card_table")
     List<CardModel> getAll();
 
+    @Query("SELECT * FROM weather_table ")
+    List<WeatherModel> getWeatherDetails();
+
     @Query("DELETE FROM card_table")
     void deleteAll();
 

@@ -12,7 +12,9 @@ public class NewsRepo {
     List<CardModel> cardModelList;
     Context ctx;
     NewsDatabase newsDatabase;
+    List<WeatherModel> weatherList;
     CallbackInterface callbackInterface;
+    Call call;
 
     public NewsRepo(Context context) {
         this.ctx = context;
@@ -77,8 +79,31 @@ public class NewsRepo {
             }
         });
         thread.start();
-
         return cardModelList;
+
+    }
+
+    public String getWeather() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                weatherList = newsDatabase.getNewsDao().getWeatherDetails();
+
+                ((SecondActivity) ctx).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        call.onWeatherRecived(weatherList);
+
+                    }
+                });
+            }
+        });
+        thread.start();
+        return null;
+
+    }
+    public interface  Call {
+        void onWeatherRecived(List<WeatherModel> data);
     }
 
     public interface CallbackInterface {
